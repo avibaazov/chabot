@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    height: fit-content;
+    max-width: 400px;
+    max-height: 70vh; /* Set a max height for the form */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.existing-tags-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+    max-width: 600px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    max-height: 70vh; /* Set a max height for the container */
+    flex-basis: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent the body from scrolling */
+}
+
+.layout-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    overflow: hidden; /* Prevent the container from scrolling */
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"], button, input[type="submit"] {
+    width: 100%; /* Full width of the form */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+#add,#train {
+    background-color: #28a745;  /* Green background */
+    color: white;               /* White text */
+    cursor: pointer;            /* Pointer cursor when hovering over the button */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+    margin: 2px;
+   
+    /* margin-top: auto */
+}
+#add:hover,#train:hover {
+    background-color: #218838;
+}
+#add:disabled,#train:disabled{
+    /* display: none; */
+    background-color: grey;
+    
+}
+.delete-training-btn{
+    width: fit-content;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    
+}
+.delete-training-btn:hover{
+    background-color: rgba(208, 52, 44);
+}
+    
+    
+
+
+
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 10px;
+    }
+}
+
+ 
+.existing-tags-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    min-width: 300px; /* Minimum width of existing tags container */
+    max-width: 600px; /* Maximum width of existing tags container */
+    margin-bottom: 20px;
+    overflow-y: auto;
+    flex-basis: 45%; /* Adjust the width of the tag container */
+    display: flex;
+    height: fit-content;
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: flex-start; /* Align items to the start */
+    gap: 10px; 
+
+  }
+.layout-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px; /* Adjust gap as needed */
+    justify-content: center;
+    max-width: 1200px; /* Max width of the layout container */
+    width: 100%;
+    
+}
+
+.tag-div{
+    background: #eee;
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: fit-content;
+    margin: 5px;
+    border-radius: 4px;
+    
+  }
+.tag-title {
+    font-weight: bold;
+}

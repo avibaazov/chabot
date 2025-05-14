@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    margin:  auto;
+    
+    max-width: 800px; /* Adjust as needed */
+    text-align: center;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: large    ;
+    padding: 14px 20px;
+    margin: 20px auto; /* Centered button */
+    border:  2px solid black;
+    cursor: pointer;
+    width: 15%; /* Adjust button width */
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.botsContainer {
+    display: flex;
+    flex-direction: column; /* Ensure items are stacked vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 20px;
+    padding: 20px;
+    /* width: 100%; */
+    width: 90%; /* Adjust as needed */
+    max-width: 800px; /* Limit the maximum width */
+    margin: auto; 
+}
+
+.bot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute space between items */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Handle overflow */
+    width: 100%; /* Fixed width */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.bot-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+
+.bot-left-half {
+    background-color: var(--bot-color);
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.bot-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 10px;
+}
+
+
+.bot:hover {
+    transform: scale(1.05); /* Slight increase in size on hover */
+
+}
+
+.bot h3 {
+    color: #1a1919;
+    font-size: 1.5em; /* Increased font size */
+}
+
+.load-bot-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+
+.bot-button,.bot-button-delete {
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 1.2rem;
+    font: bold;
+    background-color: white; 
+    color: black;
+    border: 2px solid black;
+    border-radius: 4px;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bot-button:hover {
+    background-color: rgb(153, 149, 149);
+    /* background-color: rgba(179, 6, 6, 0.774); */
+}
+
+.bot-button-delete:hover{
+    background-color: rgba(208, 52, 44);
+}
+.logout-button {
+    position: absolute;
+    top: 10px; /* Adjusts the top position */
+    right: 10px; /* Adjusts the right position */
+    padding: 10px 20px; /* Padding for better button size */
+    cursor: pointer; /* Cursor pointer to indicate it's clickable */
+    background-color: #f44; /* Red background for visibility, change as needed */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+}
+

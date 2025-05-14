@@ -1,0 +1,124 @@
+.bot-customization-container {
+    width: 60%;
+    max-width: 400px;
+    margin: 20px auto;
+    margin-top: 100px;
+    padding: 20px;
+    border: 1px solid #e1e1e8;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.bot-customization-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 22px;
+}
+
+.bot-customization-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.bot-customization-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.bot-customization-container input,
+.bot-customization-container select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.bot-customization-container input[type="color"] {
+    cursor: pointer;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+
+#getScriptButton,#submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: calc(50% - 5px);
+    transition: background-color 0.3s;
+    height: 40px; /* Explicit height for consistency */
+    box-sizing: border-box; /* Ensure padding is included in the height */
+}
+
+
+#getScriptButton:hover,#submit:hover {
+    background-color: #45a049;
+}
+
+#scriptDisplayBox {
+    width: 100%;
+    min-height: 100px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bot-customization-container {
+        width: 85%;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+    }
+
+    .bot-customization-container input[type="submit"],
+    #getScriptButton {
+        width: 100%; /* Full width for buttons on smaller screens */
+        margin-bottom: 10px; /* Add space between buttons when stacked */
+        
+    }
+}
+#scriptDisplayBox {
+    width: 90%; /* Adjust width to be less than the container's width */
+    min-height: 100px;
+    margin: 15px 20px; /* Add margin to the sides */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 14px;
+    color: #333;
+    display: block; /* Ensure it's a block-level element */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+#submit:disabled{
+    background-color: grey;
+}
+#getScriptButton:disabled{
+    background-color: grey;
+}
+

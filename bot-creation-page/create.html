@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bot Customization</title>
+    <link rel="stylesheet" href="create.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="bot-customization-container">
+        <h2>Customize Your Chatbot</h2>
+        <form id="botCustomizationForm">
+            <label for="botName">Bot Name:</label>
+            <input type="text" id="botName" name="botName" value="Chat Support">
+            
+            <label for="botGreeting">Bot Greeting:</label>
+            <input type="text" id="botGreeting" name="botGreeting" value="Hi. My name is Sam. How can I help you?">
+
+            <label for="botColor">Bot Header Color:</label>
+            <input type="color" id="botColor" name="botColor" value="#ff0000">
+
+            <label for="botTextSize">Bot Text Size:</label>
+            <select id="botTextSize" name="botTextSize">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+            </select>
+
+            <label for="botAvatar">Bot Avatar URL:</label>
+            <input type="url" id="botAvatar" name="botAvatar" value="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png">
+
+            <div class="buttons-container">
+                <button type="button" id="submit">Save Customization</button>
+                <button type="button" id="getScriptButton" disabled>Get Script</button>
+            </div>
+        </form>
+        <div id="scriptDisplayBox" class="script-display-box">
+            <!-- The generated script will be displayed here -->
+        </div>
+    </div>
+
+    <script src="./create.js"></script>
+</body>
+</html>
