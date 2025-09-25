@@ -1,178 +1,218 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  margin: 0;
+  padding: 20px;
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(59, 130, 246, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(16, 185, 129, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(99, 102, 241, 0.2) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: -1;
 }
 
 h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 form {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    height: fit-content;
-    max-width: 400px;
-    max-height: 70vh; /* Set a max height for the form */
-    overflow-y: auto; /* Enable vertical scrolling */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 80%;
+  height: fit-content;
+  max-width: 450px;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .existing-tags-container {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
-    max-width: 600px;
-    margin-bottom: 20px;
-    overflow-y: auto;
-    max-height: 70vh; /* Set a max height for the container */
-    flex-basis: 45%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden; /* Prevent the body from scrolling */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 300px;
+  max-width: 600px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+  max-height: 70vh;
+  flex-basis: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 15px;
 }
 
 .layout-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    justify-content: center;
-    max-width: 1200px;
-    width: 100%;
-    overflow: hidden; /* Prevent the container from scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  flex-wrap: wrap;
 }
 
 label {
-    font-weight: bold;
-    display: block;
-    margin: 10px 0 5px;
+  font-weight: 600;
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: #1e293b;
+  font-size: 0.9rem;
 }
 
-input[type="text"], button, input[type="submit"] {
-    width: 100%; /* Full width of the form */
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+input[type="text"],
+input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="submit"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  box-sizing: border-box;
 }
 
 button:hover {
-    background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  scale: 1.02;
 }
-#add,#train {
-    background-color: #28a745;  /* Green background */
-    color: white;               /* White text */
-    cursor: pointer;            /* Pointer cursor when hovering over the button */
-    transition: background-color 0.3s; /* Smooth transition for background color change */
-    margin: 2px;
-   
-    /* margin-top: auto */
+#add,
+#train {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 2px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
-#add:hover,#train:hover {
-    background-color: #218838;
-}
-#add:disabled,#train:disabled{
-    /* display: none; */
-    background-color: grey;
-    
-}
-.delete-training-btn{
-    width: fit-content;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    
-}
-.delete-training-btn:hover{
-    background-color: rgba(208, 52, 44);
-}
-    
-    
 
+#add:hover,
+#train:hover {
+  background: linear-gradient(135deg, #538fee 0%, #3055bb 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+  scale: 1.02;
+}
 
+#add:disabled,
+#train:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  scale: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.delete-training-btn {
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.9);
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem;
+}
+
+.delete-training-btn i {
+  font-size: 1.5em;
+}
+
+.delete-training-btn:hover {
+  background: linear-gradient(135deg, #f17171 0%, #b91c1c 100%);
+  color: white;
+  border-color: #ff6a6a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+}
 
 @media (max-width: 600px) {
-    form {
-        width: 90%;
-        padding: 10px;
-    }
-}
-
- 
-.existing-tags-container {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    min-width: 300px; /* Minimum width of existing tags container */
-    max-width: 600px; /* Maximum width of existing tags container */
-    margin-bottom: 20px;
-    overflow-y: auto;
-    flex-basis: 45%; /* Adjust the width of the tag container */
-    display: flex;
-    height: fit-content;
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: flex-start; /* Align items to the start */
-    gap: 10px; 
-
-  }
-.layout-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px; /* Adjust gap as needed */
-    justify-content: center;
-    max-width: 1200px; /* Max width of the layout container */
-    width: 100%;
-    
-}
-
-.tag-div{
-    background: #eee;
-    border: 1px solid #ddd;
+  form {
+    width: 90%;
     padding: 10px;
-    height: fit-content;
-    margin: 5px;
-    border-radius: 4px;
-    
   }
+}
+
+.tag-div {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  height: fit-content;
+  margin: 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
 .tag-title {
-    font-weight: bold;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1rem;
 }

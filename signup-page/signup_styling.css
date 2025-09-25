@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
@@ -75,7 +75,7 @@ form input {
     padding: 0 45px;
     font-size: 18px;
     background: none;
-    caret-color: #5372F0;
+    caret-color: #3b82f6;
     border-radius: 5px;
     border: 1px solid #bfbfbf;
     border-bottom-width: 2px;
@@ -84,7 +84,7 @@ form input {
 
 form .field input:focus,
 form .field.valid input {
-    border-color: #5372F0;
+    border-color: #3b82f6;
 }
 
 form .field.shake input,
@@ -113,7 +113,7 @@ form .field.error input {
 
 form input:focus~.icon,
 form .field.valid .icon {
-    color: #5372F0;
+    color: #3b82f6;
 }
 
 form .field.shake input:focus~.icon,
@@ -147,7 +147,7 @@ form .pass-txt {
 }
 
 .wrapper a {
-    color: #5372F0;
+    color: #3b82f6;
     text-decoration: none;
 }
 
@@ -161,12 +161,13 @@ form input[type="submit"] {
     color: #fff;
     padding: 0;
     border: none;
-    background: #5372F0;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
     cursor: pointer;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 form input[type="submit"]:hover {
-    background: #2c52ed;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    transform: translateY(-1px);
 }

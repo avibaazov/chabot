@@ -62,14 +62,14 @@ def business_info():
         return jsonify({"error": "Business not found"}), 404
 
 # Endpoint to get chatbot response
-@app.post("/predict")
-def predict():
-    bot_id = request.get_json().get("bot_id")
-    print(bot_id)
-    text = request.get_json().get("message")
-    response = get_response(text)
-    message = {"answer": response}
-    return jsonify(message)
+# @app.post("/predict")
+# def predict():
+#     bot_id = request.get_json().get("bot_id")
+#     print(bot_id)
+#     text = request.get_json().get("message")
+#     response = get_response(text)
+#     message = {"answer": response}
+#     return jsonify(message)
 
 # Endpoint to get chatbot response based on bot_id
 @app.post("/predict/<bot_id>")
@@ -169,7 +169,8 @@ def generate_bot_js(bot_config):
 @app.route('/get-bot-script-tag', methods=['POST'])
 def get_bot_script_tag():
     bot_id = request.json.get('bot_id')
-    script_tag = f'<script src="http://127.0.0.1:5000/generate-bot-script/{bot_id}"></script>'
+    base_url = os.getenv('BASE_URL', 'http://127.0.0.1:5000')
+    script_tag = f'<script src="{base_url}/generate-bot-script/{bot_id}"></script>'
     return jsonify({'script_tag': script_tag})
 
 # Endpoint to create a new bot
@@ -247,6 +248,6 @@ def get_existing_training_data(bot_id):
             return jsonify({'trainingData':[]}), 200
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 50
+        return jsonify({'error': str(e)}), 500
 if __name__ == "__main__":
-    app.run(debug=True) 
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000))) 

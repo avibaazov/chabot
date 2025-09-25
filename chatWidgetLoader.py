@@ -12,12 +12,11 @@ def create_template(bot_id,name, greeting, color, textSize, avatarURL):
         <div class="chatbox__support">
             <div class="chatbox__header" style="background: {color};">
                 <div class="chatbox__image--header">
-                    <img src="{avatarURL}" alt="avatar">
+                    <img src="{avatarURL}" alt="avatar"  >
                 </div>
                 <div class="chatbox__content--header">
                     <h4 class="chatbox__heading--header">{name}</h4>
                     <p class="chatbox__description--header">{greeting}</p>
-                    <button class="business-info__button">Details</button>
                 </div>
             </div>
             <div class="chatbox__messages" style="font-size: {textSize};"></div>
@@ -99,24 +98,12 @@ def create_template(bot_id,name, greeting, color, textSize, avatarURL):
             if(chatDescription) {{
                 chatDescription.textContent = botSettings.greeting;
             }}
-
-            if(businessInfoButton) {{
-                openButton.addEventListener('click', function() {{
-                    chatBox.classList.toggle('chatbox--active');
-                }});
-            }}
             
-            // Example chatbox toggle and send functionality
+            // Example chatbox toggle functionality
             if(openButton && chatBox) {{
                 openButton.addEventListener('click', function() {{
                     chatBox.classList.toggle('chatbox--active');
                 }});
-            }}
-            
-            if (businessInfoButton) {{
-            businessInfoButton.addEventListener('click', function() {{
-                getBusinessInfo();
-            }});
             }}
 
             // Handle sending of messages (modify as needed)

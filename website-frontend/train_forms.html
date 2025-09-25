@@ -1,51 +1,52 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chatbot Training Input</title>
-    <link rel="stylesheet" href="form_styling.css">
-</head>
-<body>
+    <link rel="stylesheet" href="form_styling.css" />
+  </head>
+  <body>
     <h1>Chatbot Training Data Input</h1>
     <div class="layout-container">
-    <form id="training-data-form" autocomplete="off">
-        <label for="bot_id">Bot ID:</label><br>
-        <input type="text" id="bot_id" name="bot_id" required><br>
-        <label for="tag">Intent Tag:</label><br>
-        <input type="text" id="tag" name="tag" required><br>
+      <form id="training-data-form" autocomplete="off">
+        <label for="bot_id">Bot ID:</label><br />
+        <input type="text" id="bot_id" name="bot_id" required /><br />
+        <label for="tag">Intent Tag:</label><br />
+        <input type="text" id="tag" name="tag" required /><br />
 
         <div id="patterns-wrapper">
-            <label for="patterns">Patterns:</label><br>
-            <input type="text" class="patterns" name="patterns" required><br>
+          <label for="patterns">Patterns:</label><br />
+          <input type="text" class="patterns" name="patterns" required /><br />
         </div>
-        <button type="button" id="add-pattern">Add Pattern</button><br>
+        <button type="button" id="add-pattern">Add Pattern</button><br />
 
         <div id="responses-wrapper">
-            <label for="responses">Responses:</label><br>
-            <input type="text" class="responses" name="responses" required><br>
+          <label for="responses">Responses:</label><br />
+          <input
+            type="text"
+            class="responses"
+            name="responses"
+            required
+          /><br />
         </div>
         <div>
-            <button type="button" id="add-response">Add Response</button><br>
+          <button type="button" id="add-response">Add Response</button><br />
         </div>
-        <div style="display: flex; justify-content: space-between;">
-            <button type="button" id="add">Add</button>
-            <button type="button" disabled id="train" >Train</button>
-            
+        <div style="display: flex; justify-content: space-between">
+          <button type="button" id="add">Add</button>
+          <button type="button" disabled id="train">Train</button>
         </div>
-    </form>
-    
-    <div  class="existing-tags-container">
+      </form>
+
+      <div class="existing-tags-container">
         <!-- Existing tags will be dynamically inserted here -->
         <!-- <div>
             <button type="button" disabled id="train" >Train</button>
 
         </div> -->
-        
-    </div>
+      </div>
     </div>
     <script src="train.js"></script>
-</body>
+  </body>
 </html>
