@@ -180,13 +180,56 @@ function trainBot(e) {
     },
     body: JSON.stringify(allTrainingData),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => {
       console.log("Success:", data);
       allTrainingData = [];
-      window.location.reload();
+
+      // Show training started message
+      alert("Training started! We'll monitor the progress...");
+
+      // Start polling for training status
+      pollTrainingStatus(bot_id);
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Error saving training data: " + error.message);
+    });
+}
+
+function pollTrainingStatus(bot_id) {
+  const checkStatus = () => {
+    fetch(`/training-status/${bot_id}`, {
+      method: "GET",
+      credentials: "include",
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Training status:", data);
+
+      if (data.status === "completed") {
+        alert("Training completed successfully!");
+        window.location.reload();
+      } else if (data.status === "failed") {
+        alert("Training failed: " + data.message);
+      } else if (data.status === "training" || data.status === "starting") {
+        // Still training, check again in 5 seconds
+        setTimeout(checkStatus, 5000);
+      }
+    })
+    .catch(error => {
+      console.error("Error checking training status:", error);
+      // Stop polling on error
+    });
+  };
+
+  // Start checking status after 2 seconds
+  setTimeout(checkStatus, 2000);
 }
 
 function addDynamicField(wrapperId, className) {

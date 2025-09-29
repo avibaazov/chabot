@@ -1,5 +1,6 @@
 import os
 import uuid
+import threading
 from flask import Flask, request, jsonify, Response, send_from_directory
 from flask import session
 from chat import  load_model2, get_response2
@@ -7,7 +8,7 @@ from flask_cors import CORS
 import json
 from train import train_model2
 from dotenv import load_dotenv
-import Db_Handler 
+import Db_Handler
 import chatWidgetLoader
 import googlemaps
 
@@ -20,6 +21,9 @@ app.secret_key = os.getenv('SECRET_KEY')  # Use secret key from environment vari
 
 CORS(app, resources={r"/predict": {"origins": "*"}})
 CORS(app, supports_credentials=True)
+
+# Global training status tracker
+training_status = {}
 
 # Frontend routes
 @app.route('/')
@@ -191,12 +195,38 @@ def save_form_data2(bot_id: str):
         return jsonify({"error": "Unauthorized - User not logged in"}), 401
 
     if isinstance(data_form, list):
-        # Directly update the training data for the bot
+        # Save training data to database immediately
         result = Db_Handler.save_training_form_to_database(bot_id, data_form)
-        user_data = Db_Handler.get_all_user_forms(bot_id)
-        train_model2(user_data, bot_id)
-        load_model2(bot_id)
-        return jsonify({"message": "Training data updated successfully"})
+
+        # Start training in background thread
+        def background_training():
+            try:
+                training_status[bot_id] = {"status": "training", "message": "Training in progress..."}
+                print(f"Starting training for bot {bot_id}")
+
+                user_data = Db_Handler.get_all_user_forms(bot_id)
+                train_model2(user_data, bot_id)
+                load_model2(bot_id)
+
+                training_status[bot_id] = {"status": "completed", "message": "Training completed successfully"}
+                print(f"Training completed for bot {bot_id}")
+
+            except Exception as e:
+                training_status[bot_id] = {"status": "failed", "message": f"Training failed: {str(e)}"}
+                print(f"Training failed for bot {bot_id}: {str(e)}")
+
+        # Set initial status
+        training_status[bot_id] = {"status": "starting", "message": "Training will begin shortly..."}
+
+        # Start background thread
+        training_thread = threading.Thread(target=background_training)
+        training_thread.daemon = True
+        training_thread.start()
+
+        return jsonify({
+            "message": "Training data saved successfully. Training started in background.",
+            "training_status": "started"
+        })
     else:
         return jsonify({"error": "Invalid data format"}), 400
 
@@ -303,5 +333,14 @@ def get_existing_training_data(bot_id):
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+# Endpoint to check training status
+@app.route('/training-status/<bot_id>', methods=['GET'])
+def get_training_status(bot_id):
+    if bot_id in training_status:
+        return jsonify(training_status[bot_id])
+    else:
+        return jsonify({"status": "not_found", "message": "No training status found for this bot"})
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000))) 
