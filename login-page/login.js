@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     signupLink.addEventListener("click", (event) => {
         event.preventDefault();
-        window.location.href = 'http://127.0.0.1:5500/signup-page/signup.html';
+        window.location.href = '/signup-page/signup.html';
     });
 
     resetLink.addEventListener("click", (event) => {
         event.preventDefault();
-        window.location.href = 'http://127.0.0.1:5500/reset-password-page/resetPassword.html';
+        window.location.href = '/reset-password-page/resetPassword.html';
     });
 
     form.onsubmit = (e) => {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Send data to the server
-            fetch('http://127.0.0.1:5000/login', {
+            fetch('/login', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        window.location.href = 'http://127.0.0.1:5500/main-page/main_page.html';
+                        window.location.href = '/main-page/main_page.html';
                     });
                 }
             })

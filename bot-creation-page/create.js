@@ -18,7 +18,7 @@ document.getElementById('submit').addEventListener('click', function(e) {
     };
 
     // Send this configuration to the /create-bot endpoint
-    fetch('http://127.0.0.1:5000/create-bot', {
+    fetch('/create-bot', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ document.getElementById('submit').addEventListener('click', function(e) {
 document.getElementById('getScriptButton').addEventListener('click', function() {
     const botId = localStorage.getItem('createdBotId');
     if (botId) {
-        fetch(`http://127.0.0.1:5000/get-bot-script-tag`, {
+        fetch('/get-bot-script-tag', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

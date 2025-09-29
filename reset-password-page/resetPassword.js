@@ -56,7 +56,7 @@ form.onsubmit = (e) => {
         };
 
         // Send data to the server
-        fetch('http://127.0.0.1:5000/resetPassword', {
+        fetch('/resetPassword', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ form.onsubmit = (e) => {
                 alert(data.message);
                 // Optionally, redirect or clear the form here
                 // window.location.href = '/login'; // Redirect to login page, for example
-                window.location.href = 'http://127.0.0.1:5500/login-page/login.html';
+                window.location.href = '/login-page/login.html';
             }
         })
         .catch((error) => {

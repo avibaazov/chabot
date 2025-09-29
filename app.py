@@ -1,6 +1,6 @@
 import os
 import uuid
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, send_from_directory
 from flask import session
 from chat import  load_model2, get_response2
 from flask_cors import CORS
@@ -21,45 +21,99 @@ app.secret_key = os.getenv('SECRET_KEY')  # Use secret key from environment vari
 CORS(app, resources={r"/predict": {"origins": "*"}})
 CORS(app, supports_credentials=True)
 
+# Frontend routes
+@app.route('/')
+def home():
+    return send_from_directory('main-page', 'main_page.html')
+
+@app.route('/login')
+def login_page():
+    return send_from_directory('login-page', 'login.html')
+
+@app.route('/signup') 
+def signup_page():
+    return send_from_directory('signup-page', 'signup.html')
+
+@app.route('/create')
+def create_page():
+    return send_from_directory('bot-creation-page', 'create.html')
+
+@app.route('/reset')
+def reset_page():
+    return send_from_directory('reset-password-page', 'resetPassword.html')
+
+@app.route('/bot-load-display/bot_edit.html')
+def bot_edit_page():
+    return send_from_directory('bot-load-display', 'bot_edit.html')
+
+@app.route('/website-frontend/train_forms.html') 
+def train_forms_page():
+    return send_from_directory('website-frontend', 'train_forms.html')
+
+@app.route('/bot-creation-page/create.html')
+def create_bot_page():
+    return send_from_directory('bot-creation-page', 'create.html')
+
+@app.route('/login-page/login.html')
+def login_direct_page():
+    return send_from_directory('login-page', 'login.html')
+
+@app.route('/signup-page/signup.html')
+def signup_direct_page():
+    return send_from_directory('signup-page', 'signup.html')
+
+@app.route('/main-page/main_page.html')
+def main_direct_page():
+    return send_from_directory('main-page', 'main_page.html')
+
+@app.route('/reset-password-page/resetPassword.html')
+def reset_direct_page():
+    return send_from_directory('reset-password-page', 'resetPassword.html')
+
+# Serve static files (CSS, JS, images)
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('.', filename)
+
 # Function to get business information using Google Maps API
-def get_business_info(business_name):
-    # Log the business name being searched
-    print(f"Searching for business: {business_name}")
+# def get_business_info(business_name):
+#     # Log the business name being searched
+#     print(f"Searching for business: {business_name}")
     
-    # Search for the business
-    places_result = gmaps.places(query=business_name)
+#     # Search for the business
+#     places_result = gmaps.places(query=business_name)
     
-    if places_result['status'] == 'OK' and places_result['results']:
-        place_id = places_result['results'][0]['place_id']
-        place_details = gmaps.place(place_id=place_id)
+#     if places_result['status'] == 'OK' and places_result['results']:
+#         place_id = places_result['results'][0]['place_id']
+#         place_details = gmaps.place(place_id=place_id)
         
-        if place_details['status'] == 'OK':
-            result = place_details['result']
-            opening_hours = result.get('opening_hours', {}).get('weekday_text', [])
-            business_info = {
-                "name": result.get('name'),
-                "address": result.get('formatted_address'),
-                "phone": result.get('formatted_phone_number'),
-                "rating": result.get('rating'),
-                "opening_hours": opening_hours,
-                "website": result.get('website'),
-                "maps_url": result.get('url'),
-                "reviews_url": f"https://search.google.com/local/reviews?placeid={place_id}"
-            }
-            return business_info
-    return None
+#         if place_details['status'] == 'OK':
+#             result = place_details['result']
+#             opening_hours = result.get('opening_hours', {}).get('weekday_text', [])
+#             business_info = {
+#                 "name": result.get('name'),
+#                 "address": result.get('formatted_address'),
+#                 "phone": result.get('formatted_phone_number'),
+#                 "rating": result.get('rating'),
+#                 "opening_hours": opening_hours,
+#                 "website": result.get('website'),
+#                 "maps_url": result.get('url'),
+#                 "reviews_url": f"https://search.google.com/local/reviews?placeid={place_id}"
+#             }
+#             return business_info
+#     return None
 
 # Endpoint to fetch business information
-@app.post("/business-info")
-def business_info():
-    bot_name = request.get_json().get("bot_name")
-    print(f"Received request for bot_name: {bot_name}")  # Log the bot name received
-    info = get_business_info(bot_name)
-    if info:
-        return jsonify(info)
-    else:
-        print("Business not found")  # Log that the business was not found
-        return jsonify({"error": "Business not found"}), 404
+# @app.post("/business-info")
+# def business_info():
+#     bot_name = request.get_json().get("bot_name")
+#     print(f"Received request for bot_name: {bot_name}")  # Log the bot name received
+#     info = get_business_info(bot_name)
+#     if info:
+#         return jsonify(info)
+#     else:
+#         print("Business not found")  # Log that the business was not found
+#         return jsonify({"error": "Business not found"}), 404
 
 # Endpoint to get chatbot response
 # @app.post("/predict")

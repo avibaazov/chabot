@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutButton) {
     logoutButton.addEventListener("click", function () {
       console.log("Logout clicked");
-      fetch("http://127.0.0.1:5000/logout", {
+      fetch("/logout", {
         method: "POST",
         credentials: "include", // Ensures cookies, which are required for sessions, are sent
       })
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadUserBots() {
-  fetch("http://127.0.0.1:5000/get-user-bots", {
+  fetch("/get-user-bots", {
     credentials: "include", // Ensure cookies are sent
   })
     .then((response) => response.json())
@@ -137,7 +137,7 @@ function deleteBot(botId) {
       botElement.style.pointerEvents = 'none';
     }
     
-    fetch(`http://127.0.0.1:5000/delete-bot/${botId}`, {
+    fetch(`/delete-bot/${botId}`, {
       mode: "cors",
       method: "DELETE",
       credentials: "include",
@@ -167,12 +167,12 @@ function loadBots(botId) {
   // Redirect to the bot loading page or implement logic to load the specific bot
   console.log("Loading bot with ID:", botId);
   // Example: window.location.href = `/path-to-load-bot/${botId}`;
-  window.location.href = `http://127.0.0.1:5500/bot-load-display/bot_edit.html?botId=${botId}`;
+  window.location.href = `/bot-load-display/bot_edit.html?botId=${botId}`;
 }
 function createBot() {
   // Implement the logic or redirect to the page for creating a bot
   //alert('Create Bot Clicked');
-  window.location.href = "http://127.0.0.1:5500/bot-creation-page/create.html";
+  window.location.href = "/bot-creation-page/create.html";
 }
 
 function loadBot() {
@@ -181,5 +181,5 @@ function loadBot() {
 }
 function trainBot(botId) {
   // Redirect to the training page with the botId as a query parameter
-  window.location.href = `http://127.0.0.1:5500/website-frontend/train_forms.html?botId=${botId}`;
+  window.location.href = `/website-frontend/train_forms.html?botId=${botId}`;
 }

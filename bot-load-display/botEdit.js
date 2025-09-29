@@ -60,7 +60,7 @@
         });
         document.getElementById('getScriptButtonEdit').addEventListener('click', function() {
             const botId = getBotIdFromURL(); // Retrieve the botId from URL
-            const scriptTag = `<script src="http://127.0.0.1:5000/generate-bot-script/${botId}"></script>`;
+            const scriptTag = `<script src="/generate-bot-script/${botId}"></script>`;
             
             // Display the script tag in the scriptDisplayBox
             document.getElementById('scriptDisplayBox').textContent = scriptTag;
@@ -132,7 +132,7 @@
     }
 
     function fetchBotConfiguration(botId) {
-        return fetch(`http://127.0.0.1:5000/get-bot-configuration/${botId}`, {
+        return fetch(`/get-bot-configuration/${botId}`, {
             mode: 'cors',
             credentials: 'include',
             method: 'GET',
@@ -200,7 +200,7 @@
     }
 
     function saveBotConfiguration(botId, config) {
-        fetch(`http://127.0.0.1:5000/update-bot-config/${botId}`, {
+        fetch(`/update-bot-config/${botId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

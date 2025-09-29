@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let allTrainingData = [];
 
 function fetchExistingTrainingData(botId) {
-  fetch(`http://127.0.0.1:5000/get-existing-training-data/${botId}`, {
+  fetch(`/get-existing-training-data/${botId}`, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -172,7 +172,7 @@ function trainBot(e) {
     return;
   }
   const bot_id = document.getElementById("bot_id").value;
-  fetch(`http://127.0.0.1:5000/save-form-data/${bot_id}`, {
+  fetch(`/save-form-data/${bot_id}`, {
     method: "POST",
     credentials: "include",
     headers: {
