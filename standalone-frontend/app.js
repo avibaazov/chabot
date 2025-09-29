@@ -1,7 +1,8 @@
 class Chatbox {
-    constructor(bot_id, bot_name) {
+    constructor(bot_id, bot_name, apiBaseUrl) {
         this.bot_id = bot_id;
         this.bot_name = bot_name;
+        this.apiBaseUrl = apiBaseUrl;
         this.args = {
             openButton: document.querySelector('.chatbox__button'),
             chatBox: document.querySelector('.chatbox__support'),
@@ -54,7 +55,7 @@ class Chatbox {
         let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
 
-        fetch(`/predict/${this.bot_id}`, {
+        fetch(`${this.apiBaseUrl}/predict/${this.bot_id}`, {
             method: 'POST',
             body: JSON.stringify({ message: text1 }),
             mode: 'cors',

@@ -246,7 +246,12 @@ def generate_bot_js(bot_config):
     color = bot_config.get('color')
     textSize = bot_config.get('textSize')
     avatarURL = bot_config.get('avatarURL')
-    js_template = chatWidgetLoader.create_template(bot_id, name, greeting, color, textSize, avatarURL)
+
+    # Auto-detect API base URL from current request
+    from flask import request
+    api_base_url = f"{request.scheme}://{request.host}"
+
+    js_template = chatWidgetLoader.create_template(bot_id, name, greeting, color, textSize, avatarURL, api_base_url)
     return js_template
 
 # Endpoint to get bot script tag
