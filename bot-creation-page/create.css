@@ -1,23 +1,72 @@
 .bot-customization-container {
-  width: 60%;
-  max-width: 400px;
-  margin: 20px auto;
-  margin-top: 100px;
-  padding: 20px;
-  border: 1px solid #e1e1e8;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  position: relative;
+  z-index: 1;
 }
 body {
   background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(59, 130, 246, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(16, 185, 129, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(99, 102, 241, 0.2) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 .bot-customization-container h2 {
   text-align: center;
-  margin-bottom: 15px;
-  color: #333;
-  font-size: 22px;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.bot-customization-container h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  margin: 1rem auto 0;
+  border-radius: 2px;
 }
 
 .bot-customization-container form {
@@ -26,99 +75,140 @@ body {
 }
 
 .bot-customization-container label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 14px;
+  display: block;
 }
 
 .bot-customization-container input,
 .bot-customization-container select {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bot-customization-container input:focus,
+.bot-customization-container select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
 }
 
 .bot-customization-container input[type="color"] {
   cursor: pointer;
+  height: 50px;
+  padding: 4px;
 }
 
 .buttons-container {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 1.5rem;
 }
 
 #getScriptButton,
 #submit {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  padding: 10px;
+  padding: 14px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 14px;
-  width: calc(50% - 5px);
-  transition: background-color 0.3s;
-  height: 40px; /* Explicit height for consistency */
-  box-sizing: border-box; /* Ensure padding is included in the height */
+  font-size: 15px;
+  font-weight: 600;
+  width: calc(50% - 7.5px);
+  transition: all 0.3s ease;
+  height: 50px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+#getScriptButton::before,
+#submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 #getScriptButton:hover,
 #submit:hover {
   background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
+}
+
+#getScriptButton:hover::before,
+#submit:hover::before {
+  left: 100%;
 }
 
 #scriptDisplayBox {
   width: 100%;
-  min-height: 100px;
-  margin-top: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  min-height: 120px;
+  margin-top: 24px;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #f8fafc;
   overflow-y: auto;
   white-space: pre-wrap;
-  font-size: 14px;
-  color: #333;
+  font-size: 13px;
+  color: #1e293b;
+  font-family: 'Monaco', 'Courier New', monospace;
+  line-height: 1.6;
+  box-sizing: border-box;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .bot-customization-container {
-    width: 85%;
+    padding: 2rem 1.5rem;
+  }
+
+  .bot-customization-container h2 {
+    font-size: 26px;
   }
 
   .buttons-container {
     flex-direction: column;
   }
 
-  .bot-customization-container input[type="submit"],
-  #getScriptButton {
-    width: 100%; /* Full width for buttons on smaller screens */
-    margin-bottom: 10px; /* Add space between buttons when stacked */
+  #getScriptButton,
+  #submit {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
-#scriptDisplayBox {
-  width: 90%; /* Adjust width to be less than the container's width */
-  min-height: 100px;
-  margin: 15px 20px; /* Add margin to the sides */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  overflow-y: auto;
-  white-space: pre-wrap;
-  font-size: 14px;
-  color: #333;
-  display: block; /* Ensure it's a block-level element */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-#submit:disabled {
-  background-color: grey;
-}
+
+#submit:disabled,
 #getScriptButton:disabled {
-  background-color: grey;
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#submit:disabled:hover,
+#getScriptButton:disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

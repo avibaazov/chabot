@@ -1,7 +1,7 @@
 import os
 import uuid
 import threading
-from flask import Flask, request, jsonify, Response, send_from_directory
+from flask import Flask, request, jsonify, Response, send_from_directory, redirect
 from flask import session
 from chat import  load_model2, get_response2
 from flask_cors import CORS
@@ -28,6 +28,8 @@ training_status = {}
 # Frontend routes
 @app.route('/')
 def home():
+    if 'user_id' not in session:
+        return redirect('/login-page/login.html')
     return send_from_directory('main-page', 'main_page.html')
 
 @app.route('/login')
@@ -68,6 +70,8 @@ def signup_direct_page():
 
 @app.route('/main-page/main_page.html')
 def main_direct_page():
+    if 'user_id' not in session:
+        return redirect('/login-page/login.html')
     return send_from_directory('main-page', 'main_page.html')
 
 @app.route('/reset-password-page/resetPassword.html')

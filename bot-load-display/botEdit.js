@@ -60,7 +60,7 @@
         });
         document.getElementById('getScriptButtonEdit').addEventListener('click', function() {
             const botId = getBotIdFromURL(); // Retrieve the botId from URL
-            const scriptTag = `<script src="/generate-bot-script/${botId}"></script>`;
+            const scriptTag = `<script src="${window.location.origin}/generate-bot-script/${botId}"></script>`;
             
             // Display the script tag in the scriptDisplayBox
             document.getElementById('scriptDisplayBox').textContent = scriptTag;
