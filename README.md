@@ -1,5 +1,8 @@
 # 🤖 Chabot – Custom AI Chatbot Platform
-
+<a href="https://chabot-2-c7jd.onrender.com/login" target="_blank">
+  <img width="1676" height="517" alt="image" src="https://github.com/user-attachments/assets/ddeba649-36b2-46dd-8f50-53e7be6e272a" />
+  </a>
+  
 **Chabot** is a full-stack platform that empowers website owners to create and embed AI-driven chatbots directly into their websites without writing code. Built with Flask (Python), MongoDB, and vanilla JavaScript, this system offers real-time messaging, NLP capabilities, and full customization through an intuitive UI.
 
 ---
